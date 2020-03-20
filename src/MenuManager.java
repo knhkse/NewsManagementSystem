@@ -10,6 +10,7 @@ public class MenuManager {
 		System.out.println("4. View All Article");
 		System.out.println("5. View Favorite Article");
 		System.out.println("6. Exit");
+		System.out.println("testing system");
 		
 	
 	}
