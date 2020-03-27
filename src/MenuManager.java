@@ -20,7 +20,7 @@ public class MenuManager {		//Menu Management 클래스
 			System.out.print("Select number: ");				// 원하는 메뉴 선택
 			menu = input.nextInt();
 			
-			switch (menu) {
+			switch (menu) {			// 입력한 숫자에 따라 해당 메소드 실행
 			case 1:
 				addNews();
 				break;
