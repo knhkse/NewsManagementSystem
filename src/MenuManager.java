@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class MenuManager {
 	
 	public static void main(String[] args) {
@@ -61,6 +60,9 @@ public class MenuManager {
 		input.nextLine();		// next 다음 nextLine에서 발생하는 오류를 해결하기 위한 스캐너 입력 삽입
 		System.out.print("News Link Adress: ");
 		String link = input.nextLine();
+		System.out.print("Set this article to Favorite? (y/n): ");
+		char fav = input.next().charAt(0);
+		
 		
 		System.out.println("\n**********Check News Information**********");
 		System.out.println("Number: "+num);
@@ -68,7 +70,8 @@ public class MenuManager {
 		System.out.println("Date: "+date);
 		System.out.println("Category: "+cat);
 		System.out.println("Link Adress: "+link);
-		System.out.println("==========Add Complete!==========\n\n");		
+		if (fav == 'y')System.out.println("@@ Favorite Article @@");
+		System.out.println("==========Add Complete!==========\n\n");
 	}
 	
 	public static void deleteNews() {
