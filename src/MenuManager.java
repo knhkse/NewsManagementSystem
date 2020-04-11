@@ -4,7 +4,7 @@ public class MenuManager {		//Menu Management 클래스
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		NewsManager newsManager = new NewsManager(input);
+		NewsManager newsManager = new NewsManager(input);	// NewsManager 클래스 불러오기
 		
 		int menu;				// 메뉴 입력 변수 설정
 		
@@ -13,7 +13,7 @@ public class MenuManager {		//Menu Management 클래스
 			System.out.println("1. Add Article");				// 1. 기사 추가
 			System.out.println("2. Delete Article");			// 2. 기사 삭제
 			System.out.println("3. Edit Article");				// 3. 기사 수정
-			System.out.println("4. View Article");				// 4. 기사 보기
+			System.out.println("4. View Article List");			// 4. 기사 보기
 			System.out.println("5. View Favorite Article");		// 5. 관심 기사 목록 보기
 			System.out.println("6. View Article Category List");// 6. 기사 주제 목록 보기
 			System.out.println("7. Exit");						// 7. 나가기 (프로그램 종료)
@@ -31,7 +31,7 @@ public class MenuManager {		//Menu Management 클래스
 				newsManager.editNews();
 				break;
 			case 4:
-				newsManager.viewNews();
+				newsManager.viewNewslist();
 				break;
 			case 5:
 				newsManager.viewFavNews();

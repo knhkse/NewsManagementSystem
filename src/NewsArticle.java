@@ -25,8 +25,6 @@ public class NewsArticle {
 	}
 	
 	public void printInfo() {
-		System.out.println("Number: "+ num);
-		System.out.println("Title: "+title);
-		System.out.println("Date: "+date);
+		System.out.println(num + ". " + title + " ("+date+") _"+cat);
 	}
 }
