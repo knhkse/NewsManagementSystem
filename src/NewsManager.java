@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import News.Magazine;
+import News.NewsArticle;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -11,24 +14,31 @@ public class NewsManager {
 	
 	
 	public void addNews() {		// 기사 추가 메소드
-		NewsArticle news = new NewsArticle();
+		
 		System.out.println("\n## Add Article ##");
-		System.out.print("Article Number: ");
-		news.num = input.nextInt();		// 기사 번호 입력
-		System.out.print("News Title: ");
-		input.nextLine();		// nextInt 다음 nextLine에서 발생하는 오류를 해결하기 위한 스캐너 입력 삽입
-		news.title = input.nextLine();	// 기사 헤드라인(제목) 입력
-		System.out.print("News Date: ");
-		news.date = input.next();			// 기사 날짜 입력
-		System.out.print("News Category: ");
-		news.cat = input.next();			// 기사 주제 입력
-		input.nextLine();		// next 다음 nextLine에서 발생하는 오류를 해결하기 위한 스캐너 입력 삽입
-		System.out.print("News Link Address: ");
-		news.link = input.nextLine();		// 기사 링크 주소 입력
-		System.out.print("Set this article to Favorite? (y/n): ");
-		news.fav = input.next().charAt(0);	// 관심 기사 설정 여부 입력 (y 입력 시 관심기사 설정)
-		System.out.println("");
-		articles.add(news);
+		int kind = 0;
+		NewsArticle news;
+		while(kind != 1 && kind !=2) {
+			System.out.println("1 for Newspaper");
+			System.out.println("2 for Magazine");
+			System.out.println("Select number for News Kind between 1 and 2: ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				news = new NewsArticle();
+				news.getNewsInput(input);
+				articles.add(news);
+				break;
+			}
+			else if (kind == 2) {
+				news = new Magazine();
+				news.getNewsInput(input);
+				articles.add(news);
+				break;
+			}
+			else {
+				System.out.println("Select number for News Kind between 1 and 2: ");
+			}
+		}
 	}
 	
 	public void deleteNews() {		// 기사 삭제 메소드
@@ -37,7 +47,7 @@ public class NewsManager {
 		int newsnum = input.nextInt();
 		int index = -1;
 		for (int i=0; i<articles.size(); i++) {
-			if (articles.get(i).num == newsnum) {	// 기사가 존재할 경우
+			if (articles.get(i).getNum() == newsnum) {	// 기사가 존재할 경우
 				index = i;
 				break;
 			}
@@ -59,7 +69,7 @@ public class NewsManager {
 		int newsnum = input.nextInt();
 		for (int i=0; i<articles.size(); i++) {
 			NewsArticle news = articles.get(i);
-			if (news.num == newsnum) {		// 기사가 존재할 경우
+			if (news.getNum() == newsnum) {		// 기사가 존재할 경우
 				int menu = -1;				
 									// 수정 메뉴 출력
 				System.out.println("\n** News Info Edit Menu **");
@@ -77,24 +87,29 @@ public class NewsManager {
 				case 1:		// 타이틀 수정
 					input.nextLine();	// nextInt 다음 nextLine 오류 수정
 					System.out.print("New Title: ");
-					news.title = input.nextLine();
+					String title = input.nextLine();
+					news.setTitle(title);
 					break;
 				case 2:		// 날짜 수정
 					System.out.print("New Date: ");
-					news.date = input.next();
+					String date = input.next();
+					news.setDate(date);
 					break;
 				case 3:		// 카테고리 수정
 					System.out.print("New Category: ");
-					news.cat = input.next();
+					String cat = input.next();
+					news.setCat(cat);
 					break;
 				case 4:		// 주소 수정
 					input.nextLine();	// nextInt 다음 nextLine 오류 수정
 					System.out.print("New Link Address: ");
-					news.link = input.nextLine();
+					String link = input.nextLine();
+					news.setLink(link);
 					break;
 				case 5:		// 관심기사 여부 수정
 					System.out.print("Set this article to Favorite? (y/n): ");
-					news.fav = input.next().charAt(0);
+					char fav = input.next().charAt(0);
+					news.setFav(fav);
 					break;
 				case 6:			// 수정 모드에서 나가기
 					break;
@@ -118,7 +133,7 @@ public class NewsManager {
 		
 		System.out.println("\n## View Favorite Article ##");
 		for (int i=0; i<articles.size(); i++) {
-			if (articles.get(i).fav == 'y') {
+			if (articles.get(i).getFav() == 'y') {
 				articles.get(i).printInfo();
 			}
 		}
@@ -129,10 +144,9 @@ public class NewsManager {
 		HashSet<String> category = new HashSet<String>();
 		
 		System.out.println("\n## View Article Categories ##");
-		for (int i=0; i<articles.size(); i++) 
-			category.add(articles.get(i).cat);
+		for (int i=0; i<articles.size(); i++)
+			category.add(articles.get(i).getCat());
 		System.out.println(category);
 		System.out.println();
 	}
-
 }
