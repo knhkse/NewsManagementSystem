@@ -15,12 +15,17 @@ public class NewsArticle {
 	public NewsArticle() {
 	}
 	
+	public NewsArticle(NewsKind kind) {
+		this.kind = kind;
+	}
+	
 	public NewsArticle(int num, String title) {
 		this.num = num;
 		this.title = title;
 	}
 	
-	public NewsArticle(int num, String title, String date, String cat, String link, char fav) {
+	public NewsArticle(NewsKind kind, int num, String title, String date, String cat, String link, char fav) {
+		this.kind = kind;
 		this.num = num;
 		this.title = title;
 		this.date = date;
@@ -85,8 +90,24 @@ public class NewsArticle {
 		this.fav = fav;
 	}
 	
+	
+
 	public void printInfo() {
-		System.out.println(num + ". " + title + " ("+date+") _"+cat);
+		String skind = "none";
+		switch(this.kind) {
+		case Newspaper:
+			skind = "Newspapaer: ";
+			break;
+		case Magazine:
+			skind = "Magazine: ";
+			break;
+		case Research:
+			skind = "Research: ";
+			break;
+		default:
+		}
+		
+		System.out.println(skind + num + ". " + title + " ("+date+") _"+cat);
 	}
 	
 	public void getNewsInput(Scanner input) {

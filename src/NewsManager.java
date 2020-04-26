@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 import News.Magazine;
 import News.NewsArticle;
+import News.NewsKind;
+import News.Research;
+
 import java.util.ArrayList;
 import java.util.*;
 
@@ -18,25 +21,31 @@ public class NewsManager {
 		System.out.println("\n## Add Article ##");
 		int kind = 0;
 		NewsArticle news;
-		while(kind != 1 && kind !=2) {
-			System.out.println("1 for Newspaper");
-			System.out.println("2 for Magazine");
-			System.out.println("Select number for News Kind between 1 and 2: ");
+		while(kind != 1 && kind !=2 && kind != 3) {
+			System.out.println("1. Newspaper");
+			System.out.println("2. Magazine");
+			System.out.println("3. Research");
+			System.out.print("Select number for News Kind between 1 and 3: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				news = new NewsArticle();
+				news = new NewsArticle(NewsKind.Newspaper);
 				news.getNewsInput(input);
 				articles.add(news);
 				break;
 			}
 			else if (kind == 2) {
-				news = new Magazine();
+				news = new Magazine(NewsKind.Magazine);
 				news.getNewsInput(input);
 				articles.add(news);
 				break;
 			}
+			else if (kind == 3) {
+				news = new Research(NewsKind.Research);
+				news.getNewsInput(input);
+				articles.add(news);
+			}
 			else {
-				System.out.println("Select number for News Kind between 1 and 2: ");
+				System.out.println("Select number for News Kind between 1 and 3: ");
 			}
 		}
 	}
@@ -60,7 +69,6 @@ public class NewsManager {
 			System.out.println("can't find the news number");
 			return;
 		}
-
 	}
 	
 	public void editNews() {			// 기사 수정 메소드
