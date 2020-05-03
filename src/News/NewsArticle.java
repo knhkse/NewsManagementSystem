@@ -2,7 +2,7 @@ package News;
 
 import java.util.Scanner;
 
-public class NewsArticle {
+public abstract class NewsArticle implements NewsInput{
 
 	protected NewsKind kind = NewsKind.Newspaper;
 	protected int num;
@@ -92,7 +92,45 @@ public class NewsArticle {
 	
 	
 
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setNewsNum(Scanner input) {
+		System.out.print("Article number: ");
+		int number = input.nextInt();
+		this.setNum(number);
+	}
+	
+	public void setNewsTitle(Scanner input) {
+		System.out.print("News Title: ");
+		String title = input.nextLine();
+		this.setTitle(title);
+	}
+	
+	public void setNewsDate(Scanner input) {
+		System.out.print("News Date: ");
+		String date = input.next();
+		this.setDate(date);
+	}
+	
+	public void setNewsCat(Scanner input) {
+		System.out.print("News Category: ");
+		String cat = input.next();
+		this.setCat(cat);
+	}
+
+	public void setNewsLink(Scanner input) {
+		System.out.print("News Link Address: ");
+		String link = input.nextLine();
+		this.setLink(link);
+	}
+	
+	public void setNewsFav(Scanner input) {
+		System.out.print("Set this article to Favorite? (y/n): ");
+		char fav = input.next().charAt(0);
+		this.setFav(fav);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Newspaper:
@@ -106,36 +144,7 @@ public class NewsArticle {
 			break;
 		default:
 		}
-		
-		System.out.println(skind + num + ". " + title + " ("+date+") _"+cat);
+		return skind;
 	}
 	
-	public void getNewsInput(Scanner input) {
-		System.out.print("Article Number: ");
-		int num = input.nextInt();			// 기사 번호 입력
-		this.setNum(num);
-		
-		System.out.print("News Title: ");
-		input.nextLine();		// nextInt 다음 nextLine에서 발생하는 오류를 해결하기 위한 스캐너 입력 삽입
-		String title = input.nextLine();	// 기사 헤드라인(제목) 입력
-		this.setTitle(title);
-		
-		System.out.print("News Date: ");
-		String date = input.next();			// 기사 날짜 입력
-		this.setDate(date);
-		
-		System.out.print("News Category: ");
-		String cat = input.next();			// 기사 주제 입력
-		this.setCat(cat);
-		input.nextLine();		// next 다음 nextLine에서 발생하는 오류를 해결하기 위한 스캐너 입력 삽입
-		
-		System.out.print("News Link Address: ");
-		String link = input.nextLine();		// 기사 링크 주소 입력
-		this.setLink(link);
-		
-		System.out.print("Set this article to Favorite? (y/n): ");
-		char fav = input.next().charAt(0);	// 관심 기사 설정 여부 입력 (y 입력 시 관심기사 설정)
-		this.setFav(fav);
-		System.out.println();
-	}
 }
