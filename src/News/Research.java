@@ -25,7 +25,7 @@ public class Research extends NewsETC{
 		System.out.print("Author: ");
 		String name = input.next();
 		this.setName(name);
-		
+		input.nextLine();
 		setNewsDate(input);
 		setNewsCat(input);
 		
@@ -33,5 +33,9 @@ public class Research extends NewsETC{
 		setNewsFav(input);
 		System.out.println();
 	}
-
+	
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println(skind + num + ". " + title + " ("+name+") _"+cat);
+	}
 }
