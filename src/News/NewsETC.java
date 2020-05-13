@@ -27,10 +27,7 @@ public abstract class NewsETC extends NewsArticle {
 			answer = input.next().charAt(0);
 			try {	
 				if (answer == 'Y' || answer == 'y') {
-					System.out.print("News Link Address: ");
-					input.nextLine();
-					String link = input.nextLine();		// 기사 링크 주소 입력
-					this.setLink(link);
+					setNewsLink(input);
 					break;
 				}
 				else if (answer == 'n' || answer == 'N') {
