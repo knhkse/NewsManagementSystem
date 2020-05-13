@@ -18,6 +18,4 @@ public class Magazine extends NewsETC{
 		setNewsFav(input);
 		System.out.println();
 	}
-	
-
 }

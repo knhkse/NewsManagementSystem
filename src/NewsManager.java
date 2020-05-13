@@ -24,30 +24,39 @@ public class NewsManager {
 		int kind = 0;
 		NewsInput newsInput;
 		while(kind != 1 && kind !=2 && kind != 3) {
-			System.out.println("1. Newspaper");
-			System.out.println("2. Magazine");
-			System.out.println("3. Research");
-			System.out.print("Select number for News Kind between 1 and 3: ");
-			kind = input.nextInt();
-			if (kind == 1) {
-				newsInput = new Newspaper(NewsKind.Newspaper);
-				newsInput.getNewsInput(input);
-				articles.add(newsInput);
-				break;
+			try {
+				System.out.println("1. Newspaper");
+				System.out.println("2. Magazine");
+				System.out.println("3. Research");
+				System.out.print("Select number for News Kind between 1 and 3: ");
+				kind = input.nextInt();
+				if (kind == 1) {
+					newsInput = new Newspaper(NewsKind.Newspaper);
+					newsInput.getNewsInput(input);
+					articles.add(newsInput);
+					break;
+				}
+				else if (kind == 2) {
+					newsInput = new Magazine(NewsKind.Magazine);
+					newsInput.getNewsInput(input);
+					articles.add(newsInput);
+					break;
+				}
+				else if (kind == 3) {
+					newsInput = new Research(NewsKind.Research);
+					newsInput.getNewsInput(input);
+					articles.add(newsInput);
+				}
+				else {
+					System.out.println("Select number for News Kind between 1 and 3: ");
+				}
 			}
-			else if (kind == 2) {
-				newsInput = new Magazine(NewsKind.Magazine);
-				newsInput.getNewsInput(input);
-				articles.add(newsInput);
-				break;
-			}
-			else if (kind == 3) {
-				newsInput = new Research(NewsKind.Research);
-				newsInput.getNewsInput(input);
-				articles.add(newsInput);
-			}
-			else {
-				System.out.println("Select number for News Kind between 1 and 3: ");
+			catch(InputMismatchException e) {
+				System.out.println("++ Please put an ingeger between 1~3 ++\n");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}

@@ -2,6 +2,8 @@ package News;
 
 import java.util.Scanner;
 
+import exception.LinkFormatException;
+
 public interface NewsInput {
 	
 	public int getNum();
@@ -9,7 +11,7 @@ public interface NewsInput {
 	public void setTitle(String title);
 	public void setDate(String date);
 	public void setCat(String cat);
-	public void setLink(String link);
+	public void setLink(String link) throws LinkFormatException;
 	public void setFav(char fav);
 	public char getFav();
 	public String getCat();

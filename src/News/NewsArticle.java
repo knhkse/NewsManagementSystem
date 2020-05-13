@@ -2,6 +2,8 @@ package News;
 
 import java.util.Scanner;
 
+import exception.LinkFormatException;
+
 public abstract class NewsArticle implements NewsInput{
 
 	protected NewsKind kind = NewsKind.Newspaper;
@@ -78,7 +80,10 @@ public abstract class NewsArticle implements NewsInput{
 		return link;
 	}
 
-	public void setLink(String link) {
+	public void setLink(String link) throws LinkFormatException{
+		if (!link.contains(".") && !link.equals("")) {
+			throw new LinkFormatException();
+		}
 		this.link = link;
 	}
 
@@ -119,9 +124,16 @@ public abstract class NewsArticle implements NewsInput{
 	}
 
 	public void setNewsLink(Scanner input) {
-		System.out.print("News Link Address: ");
-		String link = input.nextLine();
-		this.setLink(link);
+		String link = "";
+		while (!link.contains(".")) {
+			System.out.print("News Link Address: ");
+			link = input.nextLine();
+			try {
+				this.setLink(link);
+			} catch (LinkFormatException e) {
+				System.out.println("Incorrect Link Format");
+			}
+		}
 	}
 	
 	public void setNewsFav(Scanner input) {
@@ -146,5 +158,4 @@ public abstract class NewsArticle implements NewsInput{
 		}
 		return skind;
 	}
-	
 }
