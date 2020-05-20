@@ -1,22 +1,26 @@
 import java.util.Scanner;
 
 import News.Magazine;
-import News.NewsArticle;
 import News.NewsInput;
 import News.NewsKind;
 import News.Newspaper;
 import News.Research;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.*;
 
-public class NewsManager {
+public class NewsManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4463476444104865952L;
+	
 	ArrayList<NewsInput> articles = new ArrayList<NewsInput>();
-	Scanner input;
+	transient Scanner input;
 	NewsManager(Scanner input){	//NewsManager class에 대한 생성자 설정
 		this.input = input;
 	}
-	
 	
 	public void addNews() {		// 기사 추가 메소드
 		
@@ -52,7 +56,7 @@ public class NewsManager {
 				}
 			}
 			catch(InputMismatchException e) {
-				System.out.println("++ Please put an ingeger between 1~3 ++\n");
+				System.out.println("++ Please put an integer between 1~3 ++\n");
 				if (input.hasNext()) {
 					input.next();
 				}

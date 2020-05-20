@@ -1,11 +1,17 @@
 package News;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.LinkFormatException;
 
-public abstract class NewsArticle implements NewsInput{
+public abstract class NewsArticle implements NewsInput, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 652732243293425457L;
+	
 	protected NewsKind kind = NewsKind.Newspaper;
 	protected int num;
 	protected String title;
