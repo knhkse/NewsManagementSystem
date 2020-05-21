@@ -19,6 +19,9 @@ public class MenuManager {		//Menu Management Å¬·¡½º
 		if (newsManager == null) {
 			newsManager = new NewsManager(input);
 		}
+		else {
+			newsManager.setScanner(input);
+		}
 		selectMenu(input, newsManager);
 		putObject(newsManager, "newsmanager.ser");
 	}

@@ -22,6 +22,10 @@ public class NewsManager implements Serializable{
 		this.input = input;
 	}
 	
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+	
 	public void addNews() {		// 기사 추가 메소드
 		
 		System.out.println("\n## Add Article ##");
