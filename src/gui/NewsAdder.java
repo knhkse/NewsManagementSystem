@@ -2,20 +2,24 @@ package gui;
 
 import javax.swing.*;
 
-public class NewsAdder extends JFrame{
+public class NewsAdder extends JPanel{
 	
-	public NewsAdder() {
+	WindowFrame frame;
+	
+	public NewsAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
 		JLabel labelNum = new JLabel("Number: ", JLabel.TRAILING);
-		JTextField fieldNum = new JTextField(10);
+		JTextField fieldNum = new JTextField(5);
 		labelNum.setLabelFor(fieldNum);
 		panel.add(labelNum);
 		panel.add(fieldNum);
 		
 		JLabel labelTitle = new JLabel("Title: ", JLabel.TRAILING);
-		JTextField fieldTitle = new JTextField(10);
+		JTextField fieldTitle = new JTextField(15);
 		labelNum.setLabelFor(fieldTitle);
 		panel.add(labelTitle);
 		panel.add(fieldTitle);
@@ -49,9 +53,7 @@ public class NewsAdder extends JFrame{
 		
 		SpringUtilities.makeCompactGrid(panel, 7, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setContentPane(panel);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(panel);
 		this.setVisible(true);
 		
 	}
