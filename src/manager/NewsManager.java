@@ -1,3 +1,4 @@
+package manager;
 import java.util.Scanner;
 
 import News.Magazine;
@@ -149,7 +150,9 @@ public class NewsManager implements Serializable{
 		System.out.println();
 	}
 	
-
+	public int size() {
+		return articles.size();
+	}
 	
 	public void showEditMenu() {
 		System.out.println("\n** News Info Edit Menu **");

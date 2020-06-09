@@ -3,12 +3,19 @@ package gui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import manager.NewsManager;
+
 public class NewsViewer extends JPanel{
 	
 	WindowFrame frame;
 	
-	public NewsViewer(WindowFrame frame) {
+	NewsManager newsManager;
+	
+	public NewsViewer(WindowFrame frame, NewsManager newsManager) {
 		this.frame = frame;
+		this.newsManager = newsManager;
+		
+		//System.out.println("***"+newsManager.size()+"***");
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("NUM");

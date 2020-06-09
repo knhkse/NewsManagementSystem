@@ -1,0 +1,2 @@
+6월 09, 2020 11:00:30 오전 log.EventLogger log
+정보: view news list

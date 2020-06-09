@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,11 +7,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {		//Menu Management 클래스
 	static EventLogger logger = new EventLogger("log.txt");
-	
 	
 	public static void main(String[] args) {
 		
@@ -22,6 +24,8 @@ public class MenuManager {		//Menu Management 클래스
 		else {
 			newsManager.setScanner(input);
 		}
+		
+		WindowFrame frame = new WindowFrame(newsManager);
 		selectMenu(input, newsManager);
 		putObject(newsManager, "newsmanager.ser");
 	}
