@@ -2,6 +2,7 @@ package manager;
 import java.util.Scanner;
 
 import News.Magazine;
+import News.NewsArticle;
 import News.NewsInput;
 import News.NewsKind;
 import News.Newspaper;
@@ -152,6 +153,10 @@ public class NewsManager implements Serializable{
 	
 	public int size() {
 		return articles.size();
+	}
+	
+	public NewsInput get(int index) {
+		return (NewsArticle) articles.get(index);
 	}
 	
 	public void showEditMenu() {

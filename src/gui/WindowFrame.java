@@ -14,10 +14,10 @@ public class WindowFrame extends JFrame{
 	NewsManager newsManager;
 	
 	public WindowFrame(NewsManager newsManager) {
+		this.newsManager = newsManager;
 		menuselection = new MenuSelection(this);
 		newsadder = new NewsAdder(this);
 		newsviewer = new NewsViewer(this, this.newsManager);
-		this.newsManager = newsManager;
 		
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

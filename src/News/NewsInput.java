@@ -7,6 +7,7 @@ import exception.LinkFormatException;
 public interface NewsInput {
 	
 	public int getNum();
+	public String getTitle();
 	public void setNum(int num);
 	public void setTitle(String title);
 	public void setDate(String date);
@@ -15,6 +16,8 @@ public interface NewsInput {
 	public void setFav(char fav);
 	public char getFav();
 	public String getCat();
+	public String getDate();
+	public String getLink();
 	
 	public void getNewsInput(Scanner input);
 	

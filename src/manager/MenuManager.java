@@ -112,7 +112,7 @@ public class MenuManager {		//Menu Management 클래스
 		
 	}
 	
-	public static NewsManager putObject(NewsManager newsManager, String filename) {
+	public static void putObject(NewsManager newsManager, String filename) {
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
@@ -122,15 +122,11 @@ public class MenuManager {		//Menu Management 클래스
 			file.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return newsManager;
-		
 	}
 
 }
